@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "CTF solving toolkit",
+    "description": "Deterministic tools for CTF work: encoding decode chains, classical ciphers, hash identification and weak-secret checking, file forensics with embedded-object extraction, PNG LSB steganography, JWT dissection and weak-key checks, and pwn helpers for endianness and shellcode; plus a challenge board that opens from the sidebar."
+  }
+}

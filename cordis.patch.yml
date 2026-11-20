@@ -1,0 +1,8 @@
+# CTF 工具箱 bundle patch：把它插进 profile 的层栈。
+#
+# 一个 bundle 只插入一行：Host 半边（index.js）注册 7 个确定性工具与一段系统提示，
+# Client 半边（client.js）在侧边栏注册一个图标入口，并在 main 面板注册同名 key。
+- insert:
+    - id: ctf-kit
+      name: '@local/ctf-kit'
+      config: {}

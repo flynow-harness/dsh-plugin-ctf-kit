@@ -1,0 +1,54 @@
+{
+  "name": "@local/ctf-kit",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CTF 解题工具箱：编解码链、古典密码、哈希识别与弱口令、文件取证、PNG LSB 隐写、JWT、Pwn 辅助，外加侧边栏题板工作台面板",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flynow-harness/dsh-plugin-ctf-kit.git"
+  },
+  "homepage": "https://github.com/flynow-harness/dsh-plugin-ctf-kit#readme",
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "ctf",
+    "forensics",
+    "steganography",
+    "cryptography",
+    "hashcat",
+    "jwt",
+    "pwn"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "ctf/*.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node test/smoke.mjs",
+    "check": "node --check index.js && node --check client.js && for f in ctf/*.js; do node --check \"$f\"; done"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": {
+      "platform": "web"
+    }
+  }
+}

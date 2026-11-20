@@ -1,0 +1,36 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: syntax + unit + smoke tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Syntax check (host, client, tool modules)
+        run: |
+          node --check index.js
+          node --check client.js
+          for file in ctf/*.js; do node --check "$file"; done
+
+      - name: Unit tests (codec/cipher, hash/file/stego, jwt/pwn)
+        run: |
+          node --test test/codec.test.mjs
+          node --test test/forensics.test.mjs
+          node --test test/webpwn.test.mjs
+
+      - name: Integration smoke test (all seven tools, real sample inputs)
+        run: node test/smoke.mjs

@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# node
+node_modules/
+npm-debug.log*
+pnpm-debug.log*
+yarn-error.log*
+
+# local env / secrets
+.env
+.env.*
+*.pem
+*.key
+
+# generated while testing the toolkit locally
+test/tmp/
+*_extracted/
+coverage/
+dist/

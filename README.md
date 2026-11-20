@@ -41,12 +41,23 @@
 ## 三、安装与卸载
 
 ```bash
-# 安装（在 DSH 会话里让模型执行 plugin_manager install_bundle，target 指到本目录）
-# 卸载
-# plugin_manager remove_bundle  target: '@local/ctf-kit'
+# 1. 克隆到任意位置（本地目录安装是链接，仓库可以就放在原地）
+git clone https://github.com/flynow-harness/dsh-plugin-ctf-kit.git
 ```
 
-本目录就是一个可直接安装的 bundle：`package.json` 声明 `dsh.bundle.patch` 与 `dsh.client`，`cordis.patch.yml` 插入一行 `ctf-kit`。
+然后在 DSH 会话里让模型执行：
+
+```
+plugin_manager  action: install_bundle  target: /绝对路径/dsh-plugin-ctf-kit
+```
+
+工具调用面板 / 设置里的「插件」页也能看到 `@local/ctf-kit`。卸载：
+
+```
+plugin_manager  action: remove_bundle  target: /绝对路径/dsh-plugin-ctf-kit
+```
+
+本仓库就是一个可直接安装的 bundle：`package.json` 声明 `dsh.bundle.patch` 与 `dsh.client`，`cordis.patch.yml` 插入一行 `ctf-kit`。
 
 本地目录安装是**链接**而不是打包，所以改完 `client.js` 刷新页面即可生效；改 `index.js` 这类 Host 代码需要重启 DSH。
 
